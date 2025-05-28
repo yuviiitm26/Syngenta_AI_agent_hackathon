@@ -1,2 +1,61 @@
-# Syngenta_AI_agent_hackathon
- 🔍 AI Agent for SQL + Document + Hybrid Querying An intelligent AI assistant that understands natural language questions and answers them using:  ✅ SQL queries over structured databases  ✅ Document-based reasoning with RAG (Retrieval-Augmented Generation)  ✅ Hybrid logic (both documents + SQL) with Chain-of-Thought (CoT) prompting  ✅ Role-Based Access Control (RBAC) for secure query execution  Built using LangChain, Anthropic Claude 3.5, FAISS, and Streamlit.  🧠 Features 🗃️ Natural Language to SQL: Converts questions to PostgreSQL queries using schema-aware generation.  📄 Document QA: Answers questions grounded in preloaded PDF/text documents via retrieval and LLM synthesis.  🔁 Hybrid Reasoning: Combines document rules and SQL data to answer complex analytical questions.  🧩 Chain of Thought Prompting: Uses intermediate reasoning steps for improved query generation and answers.  🔐 RBAC (Role-Based Access Control): Restricts access to sensitive queries (e.g., profit margins) based on user roles.  💬 Chat Interface (Streamlit): Provides a conversational UI with real-time reasoning and results.  ⚠️ Robust Error Handling: Detects hallucinated tables/columns and gracefully recovers from SQL errors.  💡 Example Use Cases "What were the top 5 products with the highest return rate in Q1?"  "Which items qualify as no-movers based on our policy?"  "Explain warranty claim trends from documents and link with order history."  🏗️ Tech Stack Component	Tech LLM	Claude 3.5 Sonnet / Google Gemini SQL Engine	PostgreSQL Document Indexing	FAISS Framework	LangChain UI	Streamlit PDF Parsing	PyMuPDF / LangChain PDF loaders Prompting	Chain of Thought (CoT)  🚀 Getting Started 1. Clone the repo bash Copy Edit git clone https://github.com/your-username/ai-agent-sql-doc-chat.git cd ai-agent-sql-doc-chat 2. Install dependencies bash Copy Edit pip install -r requirements.txt 3. Configure .env Create a .env file and set your API keys and DB connection:  ini Copy Edit ANTHROPIC_API_KEY=your_key OPENAI_API_KEY=optional POSTGRES_URI=postgresql://user:pass@host:port/dbname 4. Run Streamlit App bash Copy Edit streamlit run app.py 🔐 Role-Based Access Control (RBAC) This project includes dynamic query filtering based on user roles (e.g., admin, guest). Sensitive keywords like "profit" or "financial" are blocked for non-admins, with logging and safe alternatives suggested.  📁 Directory Structure bash Copy Edit ├── app.py                      # Main Streamlit app ├── sql_utils.py                # Dynamic schema, sample data, SQL execution ├── doc_qa.py                   # Document QA using FAISS + LLM ├── hybrid_reasoning.py         # Hybrid reasoning with CoT prompting ├── auth.py                     # Role-based access control ├── prompts/                    # Prompt templates ├── data/                       # Static documents and schema files └── README.md 📌 TODOs & Improvements  Add login interface with Supabase/Auth0 for role management   Support for SQL query history   Memory for chat context   Export results to CSV/PDF  🙌 Acknowledgements LangChain  Anthropic Claude  FAISS  Streamlit  📝 License MIT License
+🔍 Hybrid AI Agent with Claude 3.5 – SQL + Document Reasoning
+This project implements an intelligent Hybrid AI Agent capable of answering natural language queries by reasoning over both:
+
+📊 Structured data from a SQL database, and
+
+📄 Unstructured policy documents using retrieval-augmented generation (RAG).
+
+It uses Claude 3.5 Sonnet for language understanding and Chain-of-Thought (CoT) prompting to route and resolve queries through the appropriate pipeline.
+
+🚀 Key Features
+🔎 Query Type Classification
+Automatically classifies user queries into SQL, Document, or Hybrid categories using CoT-based reasoning.
+
+🧠 Hybrid Reasoning
+Combines document understanding (via FAISS vector store) and database results to answer complex queries grounded in policy definitions.
+
+📁 Document QA with RAG
+Uses FAISS to retrieve top-k relevant documents and prompts Claude to answer based on context.
+
+🗄️ SQL Generation + Execution
+Converts natural language to executable SQL queries with schema grounding, executes on PostgreSQL, and returns result.
+
+🔁 SQL Retry Mechanism
+Detects hallucinated SQL errors (e.g., non-existent columns), patches and retries automatically.
+
+📊 Real-Time Performance Metrics
+Logs query response time, estimated Claude token usage, and cost for every interaction.
+
+🛠️ Tech Stack
+LLM: Claude 3.5 Sonnet via custom API proxy
+
+Vector Store: FAISS
+
+Database: PostgreSQL
+
+Backend: Python
+
+frontend: Streamlit UI for live querying
+
+Monitoring: Console logs (timing, cost, tokens)
+
+📈 Metrics Tracked
+⏱️ Response Time
+
+🧾 Token Usage (Input + Output)
+
+💰 Cost Estimation
+
+🔍 Document Retrieval Latency
+
+🛢️ SQL Execution Time
+
+🔄 Hybrid Integration Time
+
+🧪 Example Use Cases
+"What are the return policies for damaged items?" → Document QA
+
+"Show orders with delivery delay over 7 days" → SQL Query
+
+"List employees classified under 'non-compliant' by the latest policy" → Hybrid Reasoning
+
