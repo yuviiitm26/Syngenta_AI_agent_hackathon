@@ -59,3 +59,24 @@ Monitoring: Console logs (timing, cost, tokens)
 
 "List employees classified under 'non-compliant' by the latest policy" → Hybrid Reasoning
 
+📁 Project Structure
+app/
+├── __pycache__/                # Python cache files (auto-generated)
+├── data/                      # Input CSVs, PDFs, or data files
+├── faiss_index/               # FAISS index files for vector search
+├── keys/                      # API keys or credentials (exclude from Git!)
+├── main.py                    # 🚀 Entry point for the Streamlit app
+├── faiss_create.py            # Script to generate FAISS index from documents
+└── utils/
+          ├── load_csv.py             # CSV loader utility for database
+          ├── db.            # SQLAlchemy DB connection and utilities
+📌 Future Improvements
+
+LangChain integration
+
+Advanced memory & feedback loop
+
+Token caching to reduce repeated LLM calls
+
+🤝 Contributing
+PRs and suggestions are welcome! Feel free to raise issues or propose improvements for more efficient hybrid reasoning.
