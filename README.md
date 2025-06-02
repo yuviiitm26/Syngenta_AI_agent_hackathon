@@ -80,3 +80,5 @@ Token caching to reduce repeated LLM calls
 
 🤝 Contributing
 PRs and suggestions are welcome! Feel free to raise issues or propose improvements for more efficient hybrid reasoning.
+SNAPSHOTOD MY AI AGENT
+[ai_agent_syngenta](https://github.com/user-attachments/assets/a981b2fa-a7f3-4399-8955-15bfe15a5d58)
